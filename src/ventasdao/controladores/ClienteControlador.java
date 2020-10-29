@@ -53,11 +53,11 @@ public class ClienteControlador implements ICrud<Cliente>{
             ps.executeUpdate();
             connection.close();
             
-
         } catch (SQLException ex) {
-            Logger.getLogger(CategoriaControlador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteControlador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ClienteControlador implements ICrud<Cliente>{
             ps.setInt(1, entidad.getId());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(CategoriaControlador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteControlador.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return true;
@@ -111,20 +111,32 @@ public class ClienteControlador implements ICrud<Cliente>{
             ex.printStackTrace();
         }
         return null;
-    
-
     }
 
     @Override
-    public boolean modificar(Cliente entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean modificar(Cliente entidad) throws SQLException, Exception{
+        
+        connection = Conexion.obtenerConexion();
+        String sql = "UPDATE clientes SET documento = ?, nombre = ?, apellido = ? WHERE id = ?";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, entidad.getDocumento());
+            ps.setString(2, entidad.getNombre());
+            ps.setString(3, entidad.getApellido());
+            ps.setInt(4, entidad.getId());
+            ps.executeUpdate();
+            connection.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteControlador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
 
     @Override
     public Cliente extraer(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    
-    
 }
