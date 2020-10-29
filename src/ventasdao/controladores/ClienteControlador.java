@@ -43,13 +43,14 @@ public class ClienteControlador implements ICrud<Cliente>{
     public boolean crear(Cliente entidad) throws SQLException, Exception{
 
         connection = Conexion.obtenerConexion ();
-        String sql = "INSERT INTO clientes (nombre,documento,apellido) VALUES (?,?,?)";
+        String sql = "INSERT INTO clientes (nombre,documento,apellido, tipo_cliente_id) VALUES (?,?,?,?)";
         
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, entidad.getNombre());
             ps.setString(2, entidad.getDocumento());
             ps.setString(3, entidad.getApellido ());
+            ps.setInt(4, entidad.getTipoCliente().getId());
             ps.executeUpdate();
             connection.close();
             
@@ -117,14 +118,15 @@ public class ClienteControlador implements ICrud<Cliente>{
     public boolean modificar(Cliente entidad) throws SQLException, Exception{
         
         connection = Conexion.obtenerConexion();
-        String sql = "UPDATE clientes SET documento = ?, nombre = ?, apellido = ? WHERE id = ?";
+        String sql = "UPDATE clientes SET documento = ?, nombre = ?, apellido = ?, tipo_cliente_id WHERE id = ?";
         
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, entidad.getDocumento());
             ps.setString(2, entidad.getNombre());
             ps.setString(3, entidad.getApellido());
-            ps.setInt(4, entidad.getId());
+            ps.setInt(4, entidad.getTipoCliente().getId());
+            ps.setInt(5, entidad.getId());
             ps.executeUpdate();
             connection.close();
             
