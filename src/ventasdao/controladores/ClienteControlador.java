@@ -61,8 +61,20 @@ public class ClienteControlador implements ICrud<Cliente>{
     }
 
     @Override
-    public boolean eliminar(Cliente entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean eliminar(Cliente entidad) throws SQLException, Exception{
+        
+        connection = Conexion.obtenerConexion();
+        String sql = "DELETE FROM clientes WHERE id = ?";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, entidad.getId());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriaControlador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
 
     @Override

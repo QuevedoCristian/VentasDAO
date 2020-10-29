@@ -142,35 +142,30 @@ public class AbmCategoria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbAltaCategoriaActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_jbAltaCategoriaActionPerformed
-      
-        
-        
+    private void jbAltaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCategoriaActionPerformed
+
     }//GEN-LAST:event_jbAltaCategoriaActionPerformed
 
     private void jbAltaCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbAltaCategoriaMouseClicked
         // TODO add your handling code here:
-          // TODO add your handling code here:
+        // TODO add your handling code here:
         categoria = new Categoria();
-        
+
         categoria.setDenominacion(jtfDenominacion.getText());
         categoria.setDescripcion(jtfDescripcion.getText());
-        
-        
+
         try {
             categoriaControlador.crear(categoria);
         } catch (Exception ex) {
             Logger.getLogger(AbmCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         try {
             jtListadoCategorias.setModel(new GrillaCategoria(categoriaControlador.listar()));
         } catch (Exception ex) {
             Logger.getLogger(AbmCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }//GEN-LAST:event_jbAltaCategoriaMouseClicked
 
 

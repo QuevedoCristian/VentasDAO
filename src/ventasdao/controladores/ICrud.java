@@ -16,9 +16,9 @@ import java.util.List;
 public interface ICrud<T> {
     
     public boolean crear(T entidad) throws SQLException, Exception;
-    public boolean eliminar(T entidad);
+    public boolean eliminar(T entidad) throws SQLException, Exception;
     public T extraer(int id);
-    public boolean modificar(T entidad);
+    public boolean modificar(T entidad) throws SQLException, Exception;
     public List <T> listar() throws SQLException, Exception;
     
 }
