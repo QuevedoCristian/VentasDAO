@@ -91,7 +91,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmiCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCategoriaActionPerformed
         // TODO add your handling code here:
-        
+
         AbmCategoria abmCategoria = new AbmCategoria();
         jdpContenedorPrincipal.add(abmCategoria);
         abmCategoria.setVisible(true);
@@ -102,8 +102,8 @@ public class Principal extends javax.swing.JFrame {
         AbmCliente abmCliente = new AbmCliente();
         jdpContenedorPrincipal.add(abmCliente);
         abmCliente.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

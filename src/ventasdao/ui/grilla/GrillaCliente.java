@@ -7,6 +7,7 @@ package ventasdao.ui.grilla;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import ventasdao.objetos.Categoria;
 import ventasdao.objetos.Cliente;
 
 /**
@@ -40,8 +41,8 @@ public class GrillaCliente extends AbstractTableModel{
         Cliente cliente = clientes.get(rowIndex);
         switch(columnIndex){
               case 0: return cliente.getId();
-              case 1: return cliente.getNombre();
-              case 2: return cliente.getCuil();
+              case 1: return cliente.getDocumento();
+              case 2: return cliente.getNombre();
               case 3: return cliente.getApellido();
               default: return "";
           }
@@ -52,13 +53,17 @@ public class GrillaCliente extends AbstractTableModel{
     public String getColumnName(int column) {
         switch(column){
             case 0: return "ID";
-            case 1: return "NOMBRE";
-            case 2: return "CUIL";
-            case 3: return "Razon Social";
+            case 1: return "DOCUMENTO";
+            case 2: return "NOMBRE";
+            case 3: return "APELLIDO";
             default: return "";
-        
-        
         } //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Cliente getClienteFromRow(int rowIndex){
+        
+        return clientes.get(rowIndex);
+        
     }
     
 }
