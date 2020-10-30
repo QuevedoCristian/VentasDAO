@@ -54,13 +54,12 @@ public class GrillaCategoria extends AbstractTableModel{
             case 1: return "DENOMINACION";
             case 2: return "DESCRIPCION";
             default: return "";
-        
-        
         }
-        
     }
     
-    
- 
-    
+    public Categoria getCategoriaFromRow(int rowIndex){
+        
+        return categorias.get(rowIndex);
+        
+    }
 }
