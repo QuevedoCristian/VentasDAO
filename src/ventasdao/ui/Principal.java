@@ -7,6 +7,7 @@ package ventasdao.ui;
 
 import ventasdao.ui.abm.AbmCategoria;
 import ventasdao.ui.abm.AbmCliente;
+import ventasdao.ui.abm.AbmProducto;
 
 /**
  *
@@ -34,7 +35,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiCategoria = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiCliente = new javax.swing.JMenuItem();
+        jmiProducto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,13 +61,21 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jmiCategoria);
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiCliente.setText("Cliente");
+        jmiCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jmiCliente);
+
+        jmiProducto.setText("Producto");
+        jmiProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiProductoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiProducto);
 
         jMenuBar1.add(jMenu1);
 
@@ -97,14 +107,22 @@ public class Principal extends javax.swing.JFrame {
         abmCategoria.setVisible(true);
     }//GEN-LAST:event_jmiCategoriaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiClienteActionPerformed
         // TODO add your handling code here:
         AbmCliente abmCliente = new AbmCliente();
         jdpContenedorPrincipal.add(abmCliente);
         abmCliente.setVisible(true);
 
 
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiClienteActionPerformed
+
+    private void jmiProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductoActionPerformed
+        // TODO add your handling code here:
+        AbmProducto abmProducto = new AbmProducto();
+        jdpContenedorPrincipal.add(abmProducto);
+        abmProducto.setVisible(true);
+        
+    }//GEN-LAST:event_jmiProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,8 +162,9 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JDesktopPane jdpContenedorPrincipal;
     private javax.swing.JMenuItem jmiCategoria;
+    private javax.swing.JMenuItem jmiCliente;
+    private javax.swing.JMenuItem jmiProducto;
     // End of variables declaration//GEN-END:variables
 }

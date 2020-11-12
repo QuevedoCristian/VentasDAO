@@ -72,15 +72,15 @@ public class ControladorProducto implements ICrud<Producto> {
     public boolean modificar(Producto entidad) throws SQLException, Exception{
         
         connection = Conexion.obtenerConexion();
-        String sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, categorias_id = ? WHERE id = ?";
+        String sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ? WHERE id = ?";
         
         try {
             preparedStatements = connection.prepareStatement(sql);
             preparedStatements.setString(1, entidad.getNombre());
             preparedStatements.setString(2, entidad.getDescripcion());
             preparedStatements.setFloat(3, entidad.getPrecio());
-            preparedStatements.setInt(4, entidad.getCategoria().getId());
-            preparedStatements.setInt(5, entidad.getId());
+            //preparedStatements.setInt(4, entidad.getCategoria().getId());
+            preparedStatements.setInt(4, entidad.getId());
             preparedStatements.executeUpdate();
             connection.close();
         } catch (Exception e) {
