@@ -28,14 +28,14 @@ public class ControladorProducto implements ICrud<Producto> {
     public boolean crear(Producto entidad) throws SQLException, Exception{
         
         connection = Conexion.obtenerConexion();
-        String sql = "INSERT INTO productos (nombre, descripcion, precio, categorias_id) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO productos (nombre, descripcion, precio) VALUES (?,?,?)";
         
         try {
             preparedStatements = connection.prepareStatement(sql);
             preparedStatements.setString(1, entidad.getNombre());
             preparedStatements.setString(2, entidad.getDescripcion());
             preparedStatements.setFloat(3, entidad.getPrecio());
-            preparedStatements.setInt(4, entidad.getCategoria().getId());
+            //preparedStatements.setInt(4, entidad.getCategoria().getId());
             preparedStatements.executeUpdate();
             connection.close();
         } catch (Exception e) {

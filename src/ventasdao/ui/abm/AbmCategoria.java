@@ -69,6 +69,7 @@ public class AbmCategoria extends javax.swing.JInternalFrame {
         jbModificarCategoria = new javax.swing.JButton();
         jbBajasCategoria = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 0, 0));
         setClosable(true);
 
         jLabel1.setText("Denominacion");
