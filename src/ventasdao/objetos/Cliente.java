@@ -17,16 +17,6 @@ public class Cliente {
     private String apellido;
     private TipoCliente tipoCliente;
 
-    public String getCuil() {
-        return documento;
-    }
-
-    public void setCuil(String cuil) {
-        this.documento = cuil;
-    }
-
-
-
     public Integer getId() {
         return id;
     }

@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 import ventasdao.dominio.Conexion;
 import ventasdao.objetos.Cliente;
+import ventasdao.objetos.TipoCliente;
 
 /**
  *
@@ -33,8 +34,8 @@ public class ClienteControlador implements ICrud<Cliente>{
     
     private String sql;
     
+    private TipoClienteControlador tipoClienteControlador;
     
-
     //public void modificarCategoria(Categoria c);
     //public Categoria obtenerCategoria(Integer id);
     //public void eliminarCategoria(Categoria c);
@@ -43,14 +44,14 @@ public class ClienteControlador implements ICrud<Cliente>{
     public boolean crear(Cliente entidad) throws SQLException, Exception{
 
         connection = Conexion.obtenerConexion ();
-        String sql = "INSERT INTO clientes (nombre,documento,apellido) VALUES (?,?,?)";
+        sql = "INSERT INTO clientes (nombre,documento,apellido, tipo_cliente_id) VALUES (?,?,?,?)";
         
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, entidad.getNombre());
             ps.setString(2, entidad.getDocumento());
             ps.setString(3, entidad.getApellido ());
-            //ps.setInt(4, entidad.getTipoCliente().getId());
+            ps.setInt(4, entidad.getTipoCliente().getId());
             ps.executeUpdate();
             connection.close();
             
@@ -92,21 +93,17 @@ public class ClienteControlador implements ICrud<Cliente>{
             ArrayList<Cliente> clientes = new ArrayList();
             
             while(rs.next()){
-                
                 Cliente cliente = new Cliente();
                 
                 cliente.setNombre(rs.getString("nombre"));
-                cliente.setCuil(rs.getString("documento"));
+                cliente.setDocumento(rs.getString("documento"));
                 cliente.setId(rs.getInt("id"));
                 cliente.setApellido (rs.getString("apellido"));
-                
+                cliente.setTipoCliente(getTipoCliente(rs.getInt("tipo_cliente_id")));
                         //System.out.println(cliente);
-                
-                
                 clientes.add(cliente);
-                
             }
-            //System.out.println(cont);
+            connection.close();
             return clientes;
         } catch(SQLException ex){
             ex.printStackTrace();
@@ -118,15 +115,15 @@ public class ClienteControlador implements ICrud<Cliente>{
     public boolean modificar(Cliente entidad) throws SQLException, Exception{
         
         connection = Conexion.obtenerConexion();
-        String sql = "UPDATE clientes SET documento = ?, nombre = ?, apellido = ? WHERE id = ?";
+        String sql = "UPDATE clientes SET documento = ?, nombre = ?, apellido = ?, tipo_cliente_id = ? WHERE id = ?";
         
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, entidad.getDocumento());
             ps.setString(2, entidad.getNombre());
             ps.setString(3, entidad.getApellido());
-            //ps.setInt(4, entidad.getTipoCliente().getId());
-            ps.setInt(4, entidad.getId());
+            ps.setInt(4, entidad.getTipoCliente().getId());
+            ps.setInt(5, entidad.getId());
             ps.executeUpdate();
             connection.close();
             
@@ -141,4 +138,13 @@ public class ClienteControlador implements ICrud<Cliente>{
     public Cliente extraer(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    private TipoCliente getTipoCliente(Integer id) throws Exception{
+        this.tipoClienteControlador = new TipoClienteControlador();
+        
+        TipoCliente tipoCliente = tipoClienteControlador.extraer(id);
+        
+        return tipoCliente;
+    }
+    
 }

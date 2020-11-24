@@ -69,7 +69,6 @@ public class AbmCategoria extends javax.swing.JInternalFrame {
         jbModificarCategoria = new javax.swing.JButton();
         jbBajasCategoria = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 0, 0));
         setClosable(true);
 
         jLabel1.setText("Denominacion");
@@ -177,7 +176,7 @@ public class AbmCategoria extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();

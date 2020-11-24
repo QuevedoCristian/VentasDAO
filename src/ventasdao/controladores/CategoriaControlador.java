@@ -24,6 +24,7 @@ public class CategoriaControlador implements ICrud<Categoria> {
 
     private String sql;
 
+    @Override
     public ArrayList<Categoria> listar() throws SQLException, Exception {
 
         connection = Conexion.obtenerConexion();
@@ -80,7 +81,7 @@ public class CategoriaControlador implements ICrud<Categoria> {
         //connection = Conexion.obtenerConexion();
         connection = Conexion.obtenerConexion();
         String sql = "DELETE FROM categorias WHERE id = ?";
-        
+
         try {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, entidad.getId());
@@ -94,15 +95,34 @@ public class CategoriaControlador implements ICrud<Categoria> {
     }
 
     @Override
-    public Categoria extraer(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Categoria extraer(int id) throws SQLException, Exception {
+        connection = Conexion.obtenerConexion();
+        sql = "SELECT * FROM categorias WHERE id = ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            connection.close();
+
+            Categoria categoria = new Categoria();
+            if (rs.next()) {
+                categoria.setId(id);
+                categoria.setDenominacion(rs.getString("denominacion"));
+                categoria.setDescripcion(rs.getString("descripcion"));
+            }
+            return categoria;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
     }
 
     @Override
-    public boolean modificar(Categoria entidad) throws SQLException, Exception{
+    public boolean modificar(Categoria entidad) throws SQLException, Exception {
         connection = Conexion.obtenerConexion();
         String sql = "UPDATE categorias SET denominacion = ?, descripcion = ? WHERE id = ?";
-        
+
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, entidad.getDenominacion());

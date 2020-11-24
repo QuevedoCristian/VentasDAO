@@ -8,6 +8,7 @@ package ventasdao.ui;
 import ventasdao.ui.abm.AbmCategoria;
 import ventasdao.ui.abm.AbmCliente;
 import ventasdao.ui.abm.AbmProducto;
+import ventasdao.ui.abm.AbmTipoCliente;
 
 /**
  *
@@ -37,6 +38,7 @@ public class Principal extends javax.swing.JFrame {
         jmiCategoria = new javax.swing.JMenuItem();
         jmiCliente = new javax.swing.JMenuItem();
         jmiProducto = new javax.swing.JMenuItem();
+        jmiTipoCliente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +78,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jmiProducto);
+
+        jmiTipoCliente.setText("Tipo Cliente");
+        jmiTipoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiTipoClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiTipoCliente);
 
         jMenuBar1.add(jMenu1);
 
@@ -124,6 +134,13 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmiProductoActionPerformed
 
+    private void jmiTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTipoClienteActionPerformed
+        // TODO add your handling code here:
+        AbmTipoCliente abmTipoCliente = new AbmTipoCliente();
+        jdpContenedorPrincipal.add(abmTipoCliente);
+        abmTipoCliente.setVisible(true);
+    }//GEN-LAST:event_jmiTipoClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -166,5 +183,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiCategoria;
     private javax.swing.JMenuItem jmiCliente;
     private javax.swing.JMenuItem jmiProducto;
+    private javax.swing.JMenuItem jmiTipoCliente;
     // End of variables declaration//GEN-END:variables
 }
