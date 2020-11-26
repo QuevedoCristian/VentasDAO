@@ -168,10 +168,5 @@ public class FacturaControlador implements ICrud<Factura> {
 
         return cliente;
     }
-    
-    /*private List<DetalleFactura> altaDetalleFactura(DetalleFactura entidad){
-        this.detalleFacturaControlador = new DetalleFacturaControlador();
-        
-        DetalleFactura detalleFactura = detalleFacturaControlador.crear(entidad);
-    }*/
+
 }

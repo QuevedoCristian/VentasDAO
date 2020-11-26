@@ -142,7 +142,7 @@ public class Principal extends javax.swing.JFrame {
         AbmProducto abmProducto = new AbmProducto();
         jdpContenedorPrincipal.add(abmProducto);
         abmProducto.setVisible(true);
-        
+
     }//GEN-LAST:event_jmiProductoActionPerformed
 
     private void jmiTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTipoClienteActionPerformed

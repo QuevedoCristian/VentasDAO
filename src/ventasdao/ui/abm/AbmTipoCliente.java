@@ -270,11 +270,11 @@ public class AbmTipoCliente extends javax.swing.JInternalFrame {
 
     private void jtfNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNombreMouseExited
         // TODO add your handling code here:
-        if(jtfNombre.getText().length() <= 3){
+        /*if(jtfNombre.getText().length() <= 3){
             getToolkit().beep();
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "El campo nombre debe tener más de 3 caracteres");
-        }
+        }*/
     }//GEN-LAST:event_jtfNombreMouseExited
 
 

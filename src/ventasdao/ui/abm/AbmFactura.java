@@ -223,6 +223,11 @@ public class AbmFactura extends javax.swing.JInternalFrame {
                 "ID PRODUCTO", "PRODUCTO", "CANTIDAD", "MONTO"
             }
         ));
+        jtListadoDetallesFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtListadoDetallesFacturaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtListadoDetallesFactura);
 
         jbAgregar.setText("Agregar");
@@ -380,6 +385,7 @@ public class AbmFactura extends javax.swing.JInternalFrame {
 
         try {
             facturaControlador.crear(factura);
+            //jtfNumeroFactura.setText(factura.getId().toString());
             limpiarCampos();
             JOptionPane.showMessageDialog(null, "Se creo la factura");
         } catch (Exception ex) {
@@ -387,11 +393,11 @@ public class AbmFactura extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "No se creo la factura");
         }
 
-        /*try {
-            jtListadoFacturas.setModel(new GrillaFactura((ArrayList<Factura>) facturaControlador.listar()));
+        try {
+            jtListadoDetallesFactura.setModel(new GrillaFactura((ArrayList<Factura>) facturaControlador.listar()));
         } catch (Exception ex) {
             Logger.getLogger(AbmFactura.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }//GEN-LAST:event_jbAltaFacturaActionPerformed
 
     private void jbModificarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarFacturaActionPerformed
@@ -471,6 +477,7 @@ public class AbmFactura extends javax.swing.JInternalFrame {
         registro[1] = getProducto.jtfNombreAux.getText();
         registro[2] = jtfCantidad.getText();
         registro[3] = jtfTotal.getText();
+        
 
         //JOptionPane.showMessageDialog(null, "Llega " +registro);
         modelo.addRow(registro);
@@ -506,6 +513,11 @@ public class AbmFactura extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Este campo no admite letras");
         }
     }//GEN-LAST:event_jtfIdProductoKeyTyped
+
+    private void jtListadoDetallesFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtListadoDetallesFacturaMouseClicked
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_jtListadoDetallesFacturaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
