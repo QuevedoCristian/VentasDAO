@@ -1,5 +1,6 @@
 package ventasdao.objetos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Factura {
     
     private FormaPago formaPago;
     
-    private List<DetalleFactura> detalleFactura;
+    private ArrayList<DetalleFactura> detalleFacturaList;
 
     public Integer getId() {
         return id;
@@ -29,12 +30,12 @@ public class Factura {
         this.id = id;
     }
 
-    public List<DetalleFactura> getDetalleFactura() {
-        return detalleFactura;
+    public ArrayList<DetalleFactura> getDetalleFactura() {
+        return detalleFacturaList;
     }
 
-    public void setDetalleFactura(List<DetalleFactura> detalleFactura) {
-        this.detalleFactura = detalleFactura;
+    public void setDetalleFactura(ArrayList<DetalleFactura> detalleFactura) {
+        this.detalleFacturaList = detalleFactura;
     }
 
     public Integer getNumeroFactura() {

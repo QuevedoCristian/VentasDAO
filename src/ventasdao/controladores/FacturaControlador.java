@@ -5,11 +5,11 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import ventasdao.dominio.Conexion;
 import ventasdao.objetos.Cliente;
+import ventasdao.objetos.DetalleFactura;
 import ventasdao.objetos.Factura;
 import ventasdao.objetos.FormaPago;
 
@@ -28,12 +28,14 @@ public class FacturaControlador implements ICrud<Factura> {
     private FormaPagoControlador formaPagoControlador;
 
     private ClienteControlador clienteControlador;
+    
+    private DetalleFacturaControlador detalleFacturaControlador;
 
     @Override
     public boolean crear(Factura entidad) throws SQLException, Exception {
         connection = Conexion.obtenerConexion();
         sql = "INSERT INTO facturas (monto_total, observaciones, clientes_id, forma_pago_id) VALUES (?,?,?,?)";
-        Date fecha = new Date(entidad.getFechaFacturacion().getTime());
+        //Date fecha = new Date(entidad.getFechaFacturacion().getTime());
 
         try {
             ps = connection.prepareStatement(sql);
@@ -166,4 +168,10 @@ public class FacturaControlador implements ICrud<Factura> {
 
         return cliente;
     }
+    
+    /*private List<DetalleFactura> altaDetalleFactura(DetalleFactura entidad){
+        this.detalleFacturaControlador = new DetalleFacturaControlador();
+        
+        DetalleFactura detalleFactura = detalleFacturaControlador.crear(entidad);
+    }*/
 }

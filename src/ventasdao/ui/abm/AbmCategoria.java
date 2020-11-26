@@ -8,6 +8,7 @@ package ventasdao.ui.abm;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import ventasdao.controladores.CategoriaControlador;
 import ventasdao.objetos.Categoria;
 import ventasdao.ui.grilla.GrillaCategoria;
@@ -74,6 +75,17 @@ public class AbmCategoria extends javax.swing.JInternalFrame {
         jLabel1.setText("Denominacion");
 
         jLabel2.setText("Descripcion");
+
+        jtfDenominacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jtfDenominacionMouseExited(evt);
+            }
+        });
+        jtfDenominacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfDenominacionKeyTyped(evt);
+            }
+        });
 
         jbAltaCategoria.setText("Agregar");
         jbAltaCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,6 +264,23 @@ public class AbmCategoria extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_jbBajasCategoriaActionPerformed
+
+    private void jtfDenominacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDenominacionKeyTyped
+        // TODO add your handling code here:
+        /*if(jtfDenominacion.getText().length() <= 3){
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "Ingrese mas de tres caracteres");
+        }*/
+    }//GEN-LAST:event_jtfDenominacionKeyTyped
+
+    private void jtfDenominacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfDenominacionMouseExited
+        // TODO add your handling code here:
+        /*if(jtfDenominacion.getText().length() <= 3){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingrese más de 3 caracteres");
+        }*/
+    }//GEN-LAST:event_jtfDenominacionMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

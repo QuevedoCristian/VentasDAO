@@ -8,6 +8,7 @@ package ventasdao.ui.abm;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import ventasdao.controladores.TipoClienteControlador;
 import ventasdao.objetos.TipoCliente;
 import ventasdao.ui.grilla.GrillaTipoCliente;
@@ -96,6 +97,17 @@ public class AbmTipoCliente extends javax.swing.JInternalFrame {
         jLabel3.setText("Descripcion");
 
         jtfId.setEnabled(false);
+
+        jtfNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jtfNombreMouseExited(evt);
+            }
+        });
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
 
         jbAltaTipoCliente.setText("Agregar");
         jbAltaTipoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +256,26 @@ public class AbmTipoCliente extends javax.swing.JInternalFrame {
         jtfNombre.setText(tipoCliente.getNombre());
         jtfDescripcion.setText(tipoCliente.getDescripcion());
     }//GEN-LAST:event_jtListadoTipoClientesMouseClicked
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+        /*char validar = evt.getKeyChar();
+        
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Este campo no admite numeros");
+        }*/
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNombreMouseExited
+        // TODO add your handling code here:
+        if(jtfNombre.getText().length() <= 3){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "El campo nombre debe tener más de 3 caracteres");
+        }
+    }//GEN-LAST:event_jtfNombreMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

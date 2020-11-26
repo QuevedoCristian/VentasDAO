@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import ventasdao.controladores.ClienteControlador;
 import ventasdao.controladores.TipoClienteControlador;
 import ventasdao.objetos.Cliente;
@@ -89,6 +90,29 @@ public class AbmCliente extends javax.swing.JInternalFrame {
         jcbTiposCliente = new javax.swing.JComboBox<>();
 
         setClosable(true);
+
+        jtfDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfDocumentoKeyTyped(evt);
+            }
+        });
+
+        jtfNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNombreActionPerformed(evt);
+            }
+        });
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
+
+        jtfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfApellidoKeyTyped(evt);
+            }
+        });
 
         jLabel1.setText("Documento");
 
@@ -295,6 +319,50 @@ public class AbmCliente extends javax.swing.JInternalFrame {
     private void jtfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfIdActionPerformed
+
+    private void jtfDocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDocumentoKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        
+        int limit = 8;
+        
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Este campo solo admite numeros");
+        }
+        if((jtfDocumento.getText().length()) == (limit)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "DNI debe tener 8 caracteres");
+        }
+    }//GEN-LAST:event_jtfDocumentoKeyTyped
+
+    private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombreActionPerformed
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Este campo solo admite letras");
+        }
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidoKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Este campo solo admite letras");
+        }
+    }//GEN-LAST:event_jtfApellidoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -126,7 +126,7 @@ public class DetalleFacturaControlador implements ICrud<DetalleFactura> {
         return null;
     }
     
-    private Producto getProducto(Integer id) throws Exception{
+    public Producto getProducto(Integer id) throws Exception{
         this.productoControlador = new ControladorProducto();
         
         Producto producto = productoControlador.extraer(id);
