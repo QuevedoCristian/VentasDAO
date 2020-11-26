@@ -29,7 +29,7 @@ public class GrillaProducto extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -42,6 +42,7 @@ public class GrillaProducto extends AbstractTableModel {
             case 1: return p.getNombre();
             case 2: return p.getDescripcion();
             case 3: return p.getPrecio();
+            case 4: return p.getCategoria();
             default: return "";
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -55,6 +56,7 @@ public class GrillaProducto extends AbstractTableModel {
             case 1: return "NOMBRE";
             case 2: return "DESCRIPCION";
             case 3: return "PRECIO";
+            case 4: return "CATEGORIA";
             default: return "";
         }
     }

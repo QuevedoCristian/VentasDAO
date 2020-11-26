@@ -57,8 +57,26 @@ public class FormaPagoControlador implements ICrud<FormaPago> {
     }
 
     @Override
-    public FormaPago extraer(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public FormaPago extraer(int id) throws SQLException, Exception {
+        connection = Conexion.obtenerConexion();
+        sql = "SELECT * FROM forma_pago WHERE id = ?";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            connection.close();
+            
+            FormaPago formaPago = new FormaPago();
+            if(rs.next()){
+                formaPago.setId(id);
+                formaPago.setDenominacion(rs.getString("denominacion"));
+            }
+            return formaPago;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }    
     }
 
     @Override

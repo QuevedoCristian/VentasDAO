@@ -56,5 +56,10 @@ public class Cliente {
     public void setTipoCliente(TipoCliente tipoCliente) {
         this.tipoCliente = tipoCliente;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
 }

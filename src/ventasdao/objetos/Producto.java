@@ -51,4 +51,9 @@ public class Producto {
     public void setPrecio(Float precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

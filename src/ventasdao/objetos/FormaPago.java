@@ -20,4 +20,10 @@ public class FormaPago {
     public void setDenominacion(String denominacion) {
         this.denominacion = denominacion;
     }
+
+    @Override
+    public String toString() {
+        return denominacion;
+    }
+   
 }

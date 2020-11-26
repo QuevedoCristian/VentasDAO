@@ -7,6 +7,8 @@ package ventasdao.ui;
 
 import ventasdao.ui.abm.AbmCategoria;
 import ventasdao.ui.abm.AbmCliente;
+//import ventasdao.ui.abm.AbmDetalleFactura;
+import ventasdao.ui.abm.AbmFactura;
 import ventasdao.ui.abm.AbmProducto;
 import ventasdao.ui.abm.AbmTipoCliente;
 
@@ -39,18 +41,21 @@ public class Principal extends javax.swing.JFrame {
         jmiCliente = new javax.swing.JMenuItem();
         jmiProducto = new javax.swing.JMenuItem();
         jmiTipoCliente = new javax.swing.JMenuItem();
+        jmiFacturas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jdpContenedorPrincipal.setPreferredSize(new java.awt.Dimension(1200, 550));
 
         javax.swing.GroupLayout jdpContenedorPrincipalLayout = new javax.swing.GroupLayout(jdpContenedorPrincipal);
         jdpContenedorPrincipal.setLayout(jdpContenedorPrincipalLayout);
         jdpContenedorPrincipalLayout.setHorizontalGroup(
             jdpContenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
         jdpContenedorPrincipalLayout.setVerticalGroup(
             jdpContenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 442, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
@@ -87,6 +92,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jmiTipoCliente);
 
+        jmiFacturas.setText("Facturas");
+        jmiFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiFacturasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiFacturas);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -122,8 +135,6 @@ public class Principal extends javax.swing.JFrame {
         AbmCliente abmCliente = new AbmCliente();
         jdpContenedorPrincipal.add(abmCliente);
         abmCliente.setVisible(true);
-
-
     }//GEN-LAST:event_jmiClienteActionPerformed
 
     private void jmiProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductoActionPerformed
@@ -140,6 +151,13 @@ public class Principal extends javax.swing.JFrame {
         jdpContenedorPrincipal.add(abmTipoCliente);
         abmTipoCliente.setVisible(true);
     }//GEN-LAST:event_jmiTipoClienteActionPerformed
+
+    private void jmiFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFacturasActionPerformed
+        // TODO add your handling code here:
+        AbmFactura abmFactura = new AbmFactura();
+        jdpContenedorPrincipal.add(abmFactura);
+        abmFactura.setVisible(true);
+    }//GEN-LAST:event_jmiFacturasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,10 +197,11 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JDesktopPane jdpContenedorPrincipal;
+    public static javax.swing.JDesktopPane jdpContenedorPrincipal;
     private javax.swing.JMenuItem jmiCategoria;
     private javax.swing.JMenuItem jmiCliente;
+    private javax.swing.JMenuItem jmiFacturas;
     private javax.swing.JMenuItem jmiProducto;
-    private javax.swing.JMenuItem jmiTipoCliente;
+    private static javax.swing.JMenuItem jmiTipoCliente;
     // End of variables declaration//GEN-END:variables
 }

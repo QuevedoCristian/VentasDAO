@@ -67,13 +67,13 @@ public class ControladorProducto implements ICrud<Producto> {
 
     @Override
     public Producto extraer(int id) throws SQLException, Exception {
-        /*connection = Conexion.obtenerConexion();
+        connection = Conexion.obtenerConexion();
         String sql = "SELECT * FROM productos WHERE id = ?";
         
         try {
             preparedStatements = connection.prepareStatement(sql);
             preparedStatements.setInt(1, id);
-            resultSet = preparedStatements.executeQuery(sql);
+            resultSet = preparedStatements.executeQuery();
             connection.close();
             
             Producto producto = new Producto();
@@ -82,14 +82,13 @@ public class ControladorProducto implements ICrud<Producto> {
                 producto.setNombre(resultSet.getString("nombre"));
                 producto.setDescripcion(resultSet.getString("descripcion"));
                 producto.setPrecio(resultSet.getFloat("precio"));
-                producto.setCategoria(getCategoria(id));
+                producto.setCategoria(getCategoria(resultSet.getInt("categorias_id")));
             }
             return producto;
         } catch (Exception e) {
             System.err.println(e);
             return null;
-        }*/
-        return null;
+        }
     }
 
     @Override

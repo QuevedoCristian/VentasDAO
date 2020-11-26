@@ -135,8 +135,29 @@ public class ClienteControlador implements ICrud<Cliente>{
     }
 
     @Override
-    public Cliente extraer(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cliente extraer(int id) throws SQLException, Exception {
+        connection = Conexion.obtenerConexion();
+        sql = "SELECT * FROM clientes WHERE id = ?";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            connection.close();
+            
+            Cliente cliente = new Cliente();
+            if(rs.next()){
+                cliente.setId(id);
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setDocumento(rs.getString("documento"));
+                cliente.setTipoCliente(getTipoCliente(rs.getInt("tipo_cliente_id")));
+            }
+            return cliente;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        }
     }
     
     private TipoCliente getTipoCliente(Integer id) throws Exception{
